@@ -1,3 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +44,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.main {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: solid 3px #282c34 ;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#link {
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 20px;
+}
+
+h1{
+  font-size: 25px;
+}
+
+span {
+  color: #61dafb;
+  font-weight: bold;
 }
