@@ -1,5 +1,7 @@
-import { Component} from 'react';
+import React, { Component} from 'react';
 import {styled} from "styled-components";
+
+import BootstrapTest from './BootstrapTest';
 import './App.css';
 
 const EmpItem = styled.div`
@@ -77,12 +79,54 @@ const Wrapper = styled.div`
   width: 600px;
   margin: 80px auto 0 auto;
 `;
+
+const DynamicGreeting = (props) => {
+    return (
+        <div className={'mb-3 p-3 border border-' + props.color}>
+            {
+                React.Children.map(props.children, child => {
+                    return React.cloneElement(child, {className: 'shadow p-3 m-3 border rounded'})
+                })
+            }
+        </div>
+    )
+}
+
+const HelloHelloGreeting = () => {
+    return <HelloGreeting clazz={'mb-3 border '}/>
+}
+
+const HelloGreeting = (props) => {
+    return (
+        <div className={props.clazz} style={{width: '600px', margin: '0 auto'}}>
+            <DynamicGreeting color={'primary'}>
+                <h2>Beetle</h2>
+            </DynamicGreeting>
+        </div>
+    )
+}
+
 function App() {
   return (
       <EmpItem active>
         <div className="App">
-          <WhoAmI name='Andrew' surname="Granenko" link="facebook.com"/>
-          <WhoAmI name='Alex' surname="Vodnev" link="vk.com"/>
+            <HelloHelloGreeting/>
+            <HelloGreeting/>
+            <BootstrapTest
+                left={
+                    <DynamicGreeting color={'primary'}>
+                        <h2>Just hanging around</h2>
+                        <h2>Beetle</h2>
+                    </DynamicGreeting>
+                }
+                right={
+                    <DynamicGreeting color={'primary'}>
+                        <h2>RIGHT!</h2>
+                    </DynamicGreeting>
+                }
+            />
+            <WhoAmI name='Andrew' surname="Granenko" link="facebook.com"/>
+            <WhoAmI name='Alex' surname="Vodnev" link="vk.com"/>
         </div>
       </EmpItem>
   );
