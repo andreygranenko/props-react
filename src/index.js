@@ -16,7 +16,7 @@ const BigButton = styled(Button)`
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <App3/>
+      <App2/>
     <BigButton as='a'>Отправить отчет</BigButton>
   </React.StrictMode>
 );
